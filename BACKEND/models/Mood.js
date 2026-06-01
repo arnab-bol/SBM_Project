@@ -27,6 +27,22 @@ const moodSchema = new mongoose.Schema(
       trim: true,
     },
 
+    userId: {
+      type: String,
+      required: true
+    },
+
+    userName: {
+      type: String
+    },
+
+    userEmail: {
+      type: String
+    },
+
+
+
+
     createdAt: {
       type: Date,
       default: Date.now,

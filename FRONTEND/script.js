@@ -97,7 +97,12 @@ function mapContactFromApi(c) {
 
 async function loadMoods() {
   try {
-    const res = await fetch(`${API_URL}/moods`);
+
+    const res = await fetch(
+      `${API_URL}/moods?userId=${userData.id}`
+    );
+
+
     if (!res.ok) throw new Error('Failed to load moods');
     const data = await res.json();
     moodLogs = data.map(mapMoodFromApi);
@@ -113,7 +118,7 @@ async function loadMoods() {
 
 async function loadJournals() {
   try {
-    const res = await fetch(`${API_URL}/journals`);
+    const res = await fetch(`${API_URL}/journals?userId=${userData.id}`);
     if (!res.ok) throw new Error('Failed to load journals');
     const data = await res.json();
     journalEntries = data.map(mapJournalFromApi);
@@ -129,7 +134,7 @@ async function loadJournals() {
 
 async function loadContacts() {
   try {
-    const res = await fetch(`${API_URL}/contacts`);
+    const res = await fetch(`${API_URL}/contacts?userId=${userData.id}`);
     if (!res.ok) throw new Error('Failed to load contacts');
     const data = await res.json();
     contacts = data.map(mapContactFromApi);
@@ -198,9 +203,14 @@ async function logMood() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
 
+
       body: JSON.stringify({
 
         userId: userData.id,
+
+        userName: userData.name,
+
+        userEmail: userData.email,
 
         mood: selectedMood.label,
 
@@ -208,7 +218,8 @@ async function logMood() {
 
         note,
 
-      }),
+      })
+
 
 
     });
@@ -484,15 +495,22 @@ async function saveEntry() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
 
+
       body: JSON.stringify({
 
         userId: userData.id,
 
-        title: title || 'Untitled',
+        userName: userData.name,
 
-        body,
+        userEmail: userData.email,
 
-      }),
+        title,
+
+        body
+
+      })
+
+
 
 
     });
@@ -772,15 +790,22 @@ async function addContact() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
 
+
       body: JSON.stringify({
 
         userId: userData.id,
+
+        userName: userData.name,
+
+        userEmail: userData.email,
 
         name,
 
         phone
 
-      }),
+      })
+
+
 
 
     });

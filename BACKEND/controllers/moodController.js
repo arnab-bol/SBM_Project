@@ -6,9 +6,13 @@ const getMoods = async (req, res) => {
     try {
 
 
+
         const moods =
-            await Mood.find()
-                .sort({ createdAt: -1 });
+            await Mood.find({
+                userId: req.query.userId
+            }).sort({ createdAt: -1 });
+
+
 
 
 
@@ -29,12 +33,17 @@ const createMood = async (req, res) => {
 
     try {
 
+
         const {
             mood,
             emoji,
             note,
-            userId
+            userId,
+            userName,
+            userEmail
         } = req.body;
+
+
 
         if (!mood || !emoji) {
 
@@ -44,14 +53,23 @@ const createMood = async (req, res) => {
 
         }
 
+
         const newMood = await Mood.create({
 
             userId,
+
+            userName,
+
+            userEmail,
+
             mood,
+
             emoji,
+
             note: note || '',
 
         });
+
 
         res.status(201).json(newMood);
 
