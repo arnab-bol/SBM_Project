@@ -53,6 +53,7 @@ async function register(req, res) {
             Date.now() + 5 * 60 * 1000;
 
         await user.save();
+       
 
         // Send Mail
         await transporter.sendMail({
