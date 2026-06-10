@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MindSpace Register</title>
+
+  <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="card">
+
+      <h1>🌿 MindSpace</h1>
+
+      <p>Create Account</p>
+
+      <input type="text" id="registerName" placeholder="Enter Name">
+
+      <input type="email" id="registerEmail" placeholder="Enter Email">
+
+      <input type="password" id="registerPassword" placeholder="Enter Password">
+
+      <button onclick="registerUser()">
+        Register
+      </button>
+
+      <div class="bottom-text">
+        Already have account?
+
+        <button type="button" onclick="window.location.href='login.html'">
+
+          Login
+
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="auth.js"></script>
+
+</body>
+
+</html>

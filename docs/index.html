@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindSpace - Mental Health Support</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo"><span class="logo-icon">🌿</span> MindSpace</div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="showScreen('home')">Home</button>
+      <button class="nav-tab" onclick="showScreen('mood')">Mood</button>
+      <button class="nav-tab" onclick="showScreen('journal')">Journal</button>
+      <button class="nav-tab" onclick="showScreen('breathe')">Breathe</button>
+      <button class="nav-tab" onclick="showScreen('inspire')">Inspire</button>
+      <button class="nav-tab" onclick="showScreen('emergency')">Help</button>
+      <button class="nav-tab logout-btn" onclick="logoutUser()"> Logout </button>
+     
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <div class="screen active" id="screen-home">
+    <div class="hero">
+      <p class="hero-eyebrow">Your mental wellness companion</p>
+      <h1>You deserve to <em>feel good</em>, every single day.</h1>
+      <p>A calm, supportive space to track your mood, reflect, breathe, and find encouragement — no cost, no judgment.
+      </p>
+    </div>
+    <div class="greeting-card">
+      <div class="greeting-text">
+        <h2 id="greeting-text"></h2>
+        <p id="greeting-date"></p>
+      </div>
+      <div class="greeting-emoji">🌿</div>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card" onclick="showScreen('mood')">
+        <div class="feature-icon">😊</div>
+        <h3>Mood Tracker</h3>
+        <p>Log how you feel daily and spot patterns over time.</p>
+        <span class="tag" style="background:rgba(107,174,212,0.15);color:#4a8fad;">Track today →</span>
+      </div>
+      <div class="feature-card" onclick="showScreen('journal')">
+        <div class="feature-icon">📓</div>
+        <h3>Journaling</h3>
+        <p>Write freely. A private space for your thoughts and reflections.</p>
+        <span class="tag" style="background:rgba(212,168,67,0.15);color:#a0781c;">Write →</span>
+      </div>
+      <div class="feature-card" onclick="showScreen('breathe')">
+        <div class="feature-icon">🌬️</div>
+        <h3>Breathing</h3>
+        <p>Guided exercises to calm your nervous system instantly.</p>
+        <span class="tag" style="background:rgba(122,158,126,0.15);color:#4a7150;">Breathe →</span>
+      </div>
+      <div class="feature-card" onclick="showScreen('inspire')">
+        <div class="feature-icon">✨</div>
+        <h3>Motivation</h3>
+        <p>Uplifting quotes and affirmations for difficult moments.</p>
+        <span class="tag" style="background:rgba(155,142,196,0.15);color:#6b5fa0;">Inspire me →</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <div class="feature-card" onclick="showScreen('emergency')"
+        style="background:linear-gradient(135deg,rgba(224,93,93,0.08),rgba(224,93,93,0.04));border-color:rgba(224,93,93,0.2);">
+        <div class="feature-icon">🆘</div>
+        <h3>Emergency Support</h3>
+        <p>Access helplines and trusted contacts immediately when you need help most.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOOD -->
+  <div class="screen" id="screen-mood">
+    <h1 class="section-title">How are you feeling?</h1>
+    <p class="section-sub">Tap a mood to log your emotional state for today.</p>
+
+    <div class="mood-wheel">
+      <button class="mood-btn" style="color:#4CAF50" onclick="selectMood(this,'Happy','😄')">
+        <span class="mood-emoji">😄</span>
+        <span class="mood-label">Happy</span>
+      </button>
+      <button class="mood-btn" style="color:#8BC34A" onclick="selectMood(this,'Calm','😌')">
+        <span class="mood-emoji">😌</span>
+        <span class="mood-label">Calm</span>
+      </button>
+      <button class="mood-btn" style="color:#FFC107" onclick="selectMood(this,'Okay','😐')">
+        <span class="mood-emoji">😐</span>
+        <span class="mood-label">Okay</span>
+      </button>
+      <button class="mood-btn" style="color:#FF9800" onclick="selectMood(this,'Anxious','😰')">
+        <span class="mood-emoji">😰</span>
+        <span class="mood-label">Anxious</span>
+      </button>
+      <button class="mood-btn" style="color:#f44336" onclick="selectMood(this,'Sad','😢')">
+        <span class="mood-emoji">😢</span>
+        <span class="mood-label">Sad</span>
+      </button>
+      <button class="mood-btn" style="color:#9C27B0" onclick="selectMood(this,'Stressed','😤')">
+        <span class="mood-emoji">😤</span>
+        <span class="mood-label">Stressed</span>
+      </button>
+      <button class="mood-btn" style="color:#2196F3" onclick="selectMood(this,'Tired','😴')">
+        <span class="mood-emoji">😴</span>
+        <span class="mood-label">Tired</span>
+      </button>
+      <button class="mood-btn" style="color:#E91E63" onclick="selectMood(this,'Angry','😠')">
+        <span class="mood-emoji">😠</span>
+        <span class="mood-label">Angry</span>
+      </button>
+      <button class="mood-btn" style="color:#00BCD4" onclick="selectMood(this,'Hopeful','🌟')">
+        <span class="mood-emoji">🌟</span>
+        <span class="mood-label">Hopeful</span>
+      </button>
+      <button class="mood-btn" style="color:#795548" onclick="selectMood(this,'Lonely','🥺')">
+        <span class="mood-emoji">🥺</span>
+        <span class="mood-label">Lonely</span>
+      </button>
+    </div>
+
+    <div class="mood-note" style="margin-bottom:16px;">
+      <textarea id="mood-note-input" placeholder="Add a note about what's going on… (optional)"></textarea>
+    </div>
+    <button class="btn-primary" onclick="logMood()">💾 Save Mood</button>
+
+    <div class="mood-history" style="margin-top:36px;">
+
+      <div class="mood-history-top">
+
+        <h3>Recent Logs</h3>
+
+        <div class="mood-filter-bar">
+
+          <div class="calendar-box">
+
+            <label>Mood Calendar</label>
+
+            <input type="date" id="mood-date-filter" onchange="filterMoodByDate()">
+
+          </div>
+
+          <button class="btn-secondary" onclick="clearMoodFilter()">
+            Show All
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="mood-log-list">
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- JOURNAL -->
+  <div class="screen" id="screen-journal">
+    <h1 class="section-title">My Journal</h1>
+    <p class="section-sub">A private space to express, reflect, and grow.</p>
+
+    <div class="journal-form">
+      <input type="text" id="journal-title" placeholder="Give your entry a title…" maxlength="80" />
+      <textarea id="journal-body" placeholder="Write what's on your mind…"></textarea>
+      <button class="btn-primary" onclick="saveEntry()">📝 Save Entry</button>
+    </div>
+
+    <div class="journal-entries">
+
+      <div class="mood-history-top">
+
+        <h3>Past Entries</h3>
+
+        <div class="mood-filter-bar">
+
+          <div class="calendar-box">
+
+            <label>Journal Calendar</label>
+
+            <input type="date" id="journal-date-filter" onchange="filterJournalByDate()">
+
+          </div>
+
+          <button class="btn-secondary" onclick="clearJournalFilter()">
+            Show All
+          </button>
+
+        </div>
+
+      </div>
+
+      <div id="journal-list">
+        <p style="color:var(--muted);font-size:0.9rem;">No entries yet. Write your first one above!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREATHE -->
+  <div class="screen" id="screen-breathe">
+    <h1 class="section-title">Breathing Exercises</h1>
+    <p class="section-sub">Slow your breath, calm your mind.</p>
+
+    <div class="breathing-container">
+      <div class="breath-circle-wrap">
+        <div class="breath-circle" id="breath-circle">
+          <span class="breath-label" id="breath-phase-label">Ready</span>
+          <span class="breath-sub" id="breath-phase-sub">Press Start</span>
+        </div>
+      </div>
+
+      <div class="breath-phases">
+        <div class="phase">
+          <div class="phase-name">Inhale</div>
+          <div class="phase-time" id="ph-inhale">4s</div>
+        </div>
+        <div class="phase">
+          <div class="phase-name">Hold</div>
+          <div class="phase-time" id="ph-hold">4s</div>
+        </div>
+        <div class="phase">
+          <div class="phase-name">Exhale</div>
+          <div class="phase-time" id="ph-exhale">4s</div>
+        </div>
+      </div>
+
+      <div>
+        <button class="btn-primary" id="breath-start-btn" onclick="toggleBreath()">▶ Start</button>
+        <button class="btn-secondary" onclick="resetBreath()">↺ Reset</button>
+      </div>
+    </div>
+
+    <div class="technique-cards">
+      <div class="technique-card active" onclick="setTechnique(this,4,4,4,'Box Breathing')">
+        <h4>📦 Box Breathing</h4>
+        <p>4-4-4 — Balanced calm for focus</p>
+      </div>
+      <div class="technique-card" onclick="setTechnique(this,4,7,8,'4-7-8 Relaxing')">
+        <h4>😴 4-7-8 Relaxing</h4>
+        <p>4-7-8 — Deep sleep & anxiety relief</p>
+      </div>
+      <div class="technique-card" onclick="setTechnique(this,4,0,4,'Coherent Breathing')">
+        <h4>🌊 Coherent</h4>
+        <p>4-0-4 — Steady, simple rhythm</p>
+      </div>
+      <div class="technique-card" onclick="setTechnique(this,6,2,8,'Stress Relief')">
+        <h4>🌬️ Stress Relief</h4>
+        <p>6-2-8 — Quick tension release</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSPIRE -->
+  <div class="screen" id="screen-inspire">
+    <h1 class="section-title">Daily Inspiration</h1>
+    <p class="section-sub">Words to carry you through.</p>
+
+    <div class="quote-card" id="quote-card">
+      <div class="quote-text" id="quote-text">You are stronger than you believe and braver than you think.</div>
+      <div class="quote-author" id="quote-author">— A.A. Milne</div>
+      <button class="quote-refresh" onclick="newQuote()">✦ New Quote</button>
+    </div>
+
+    <h3 style="font-weight:600;margin-bottom:16px;">Daily Affirmations</h3>
+    <div class="affirmation-grid" id="affirmation-grid"></div>
+  </div>
+
+  <!-- EMERGENCY -->
+  <div class="screen" id="screen-emergency">
+    <div class="emergency-banner">
+      <div class="em-icon">🆘</div>
+      <div>
+        <h2>You Are Not Alone</h2>
+        <p>If you're in crisis, please reach out. Help is available 24/7.</p>
+      </div>
+    </div>
+
+    <div class="helpline-list">
+      <h3 style="font-weight:600;margin-bottom:14px;">Crisis Helplines</h3>
+      <div class="helpline-card">
+        <div class="helpline-icon">📞</div>
+        <div class="helpline-info">
+          <h4>iCall (India)</h4>
+          <p>Psychological counselling & mental health support</p>
+        </div>
+        <a href="tel:9152987821" class="call-btn">9152987821</a>
+      </div>
+      <div class="helpline-card">
+        <div class="helpline-icon">💙</div>
+        <div class="helpline-info">
+          <h4>Vandrevala Foundation</h4>
+          <p>24/7 mental health helpline — India</p>
+        </div>
+        <a href="tel:18602662345" class="call-btn">1860-2662-345</a>
+      </div>
+      <div class="helpline-card">
+        <div class="helpline-icon">🌏</div>
+        <div class="helpline-info">
+          <h4>NIMHANS Helpline</h4>
+          <p>National Institute of Mental Health — India</p>
+        </div>
+        <a href="tel:080-46110007" class="call-btn">080-46110007</a>
+      </div>
+      <div class="helpline-card">
+        <div class="helpline-icon">🌐</div>
+        <div class="helpline-info">
+          <h4>Befrienders India</h4>
+          <p>Suicide prevention & emotional support</p>
+        </div>
+        <a href="tel:044-24640050" class="call-btn">044-24640050</a>
+      </div>
+
+    </div>
+
+    <div class="trusted-contacts">
+      <h3>Trusted Contacts</h3>
+      <div class="contact-add">
+        <input type="text" id="contact-name-input" placeholder="Contact name" />
+        <input type="text" id="contact-phone-input" placeholder="Phone number" />
+        <button onclick="addContact()">+</button>
+      </div>
+      <div id="contact-list">
+        <p style="color:var(--muted);font-size:0.88rem;">Add people you trust — family, friends, or a counsellor.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+
+</body>
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+  <h3>SBM Project 2026</h3>
+
+  <p>
+    Jorhat Engineering College · Department of Computer Science & Engineering<br>
+
+  </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</html>
