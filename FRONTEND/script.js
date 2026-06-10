@@ -29,7 +29,7 @@ function logoutUser() {
 
 
 const API_URL =
-  "http://localhost:3000/api";
+  "https://mindspace-backend-k9b0.onrender.com/api";
 
 
 

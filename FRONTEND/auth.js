@@ -3,7 +3,7 @@ console.log("auth.js loaded");
 
 
 const BASE_URL =
-    "http://localhost:3000/api/auth";
+    "https://mindspace-backend-k9b0.onrender.com/api/auth";
 
 
 async function registerUser() {
